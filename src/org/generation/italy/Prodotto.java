@@ -15,18 +15,23 @@ class Prodotto {
 	private String codice, descrizione;
 	private float prezzo, sconto;
 	private int quantità_disp;
+	float unità_acquistate;
 	
 	//costruttore della classe Prodotto
-	public Prodotto(String codice, String descrizione, float prezzo, int quantità_disp) {
+	public Prodotto(String codice, String descrizione, float prezzo, float sconto, int quantità_disp) {
 		
 		this.codice = codice;
 		this.descrizione = descrizione;
 		this.prezzo = prezzo;
-		this.sconto = 0;
+		this.sconto = sconto;
 		this.quantità_disp = quantità_disp;
+		this.unità_acquistate = 0;
 	}
 	
-	
+	public float Prezzo_scontato() {
+		return prezzo-(prezzo*(sconto/100));
+		
+	}
 	
 	
 	public String getCodice() {
@@ -78,12 +83,18 @@ class Prodotto {
 	}
 
 
-	public void setQuantità_disp(int quantità_disp) {
+	public void setQuantità_disp(float unità) {
 		if(quantità_disp>0)
-			this.quantità_disp = quantità_disp;
+			this.quantità_disp -= unità;
 	}
 	
+	public void setUnità_acquistate(float unità) {
+		this.unità_acquistate = unità;
+	}
 	
+	public float getUnità_acquistate() {
+		return unità_acquistate;
+	}
 	
 	
 
